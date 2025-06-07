@@ -1,6 +1,6 @@
 from fastapi import APIRouter,Depends
 from typing import List
-from apps.workers.schemas.workers import WorkerSchema
+from apps.workers.schemas.workers import CustomUserSchema
 from apps.workers.schemas.reservation import ReservationCreateSchema, ReservationSchema
 from apps.workers.services.workers import get_all_workers
 from apps.workers.services.reservation import create_reservation
@@ -9,8 +9,8 @@ from sqlalchemy.ext.asyncio import AsyncSession
 
 router = APIRouter()
 
-@router.get("/all-workers", response_model=List[WorkerSchema])
-async def all_haircuts(workers: WorkerSchema = Depends(get_all_workers))-> list:
+@router.get("/all-workers", response_model=List[CustomUserSchema])
+async def all_workers(workers: CustomUserSchema = Depends(get_all_workers))-> list:
     return workers
 
 @router.post("/create-reservation", response_model=ReservationSchema)

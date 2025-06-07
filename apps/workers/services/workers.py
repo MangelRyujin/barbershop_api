@@ -1,13 +1,13 @@
 from config.db import get_db
 from fastapi import Depends, HTTPException,status
-from apps.workers.models.workers import Worker
+from apps.workers.models.workers import CustomUser
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy import select
 
 
 async def get_all_workers( db: AsyncSession = Depends(get_db)  ):
     try:
-        result = await db.execute(select(Worker))
+        result = await db.execute(select(CustomUser).where(CustomUser.is_worker == True))
         workers = result.scalars()
         return workers
     except Exception as e:

@@ -1,7 +1,7 @@
 from datetime import date, time,datetime
 from fastapi import HTTPException,status
 from sqlalchemy import select
-from apps.workers.models.workers import Reservation
+from apps.workers.models.workers import Reservation,CustomUser
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from apps.workers.schemas.reservation import ReservationCreateSchema
@@ -24,6 +24,8 @@ async def validate_reservation_exists(reservation_data:ReservationCreateSchema,d
     existing_reservation = await db.execute(
             select(Reservation).where(
                 Reservation.worker_id == reservation_data.worker_id,
+                CustomUser.is_worker == True,
+                CustomUser.id == reservation_data.worker_id,
                 Reservation.reservation_date == reservation_data.reservation_date,
                 Reservation.reservation_time == reservation_data.reservation_time
             )

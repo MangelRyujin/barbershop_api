@@ -2,10 +2,12 @@ from pydantic import BaseModel,validator
 from typing import Optional
 from config.settings import settings
 
-class WorkerSchema(BaseModel):
+class CustomUserSchema(BaseModel):
     id: int
     image: str
-    user_id: int | None = None
+    is_worker: bool
+    first_name: str | None = None
+    last_name: str | None = None
     image_url: Optional[str] = None 
     
     class Config:
