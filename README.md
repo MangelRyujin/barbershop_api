@@ -7,7 +7,7 @@ This is a FastAPI application for managing a barbershop. It provides endpoints f
 
 1. Clone the repository:
    ```
-   git clone <repository-url>
+   git clone https://github.com/MangelRyujin/barbershop_api.git
    cd barbershop_api
    ```
 
@@ -18,7 +18,7 @@ This is a FastAPI application for managing a barbershop. It provides endpoints f
 
 3. Run the application:
    ```
-   uvicorn src.main:app --reload
+   py main.py
    ```
 
 ## Usage

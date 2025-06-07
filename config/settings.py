@@ -21,6 +21,9 @@ class Settings(BaseSettings):
     # FRONTEND
     FRONTEND_URL: str = config("FRONTEND_URL", default="http://localhost:3000")
 
+    # Backend admin
+    BACKEND_ADMIN_URL: str = config("BACKEND_ADMIN_URL", default="http://localhost:8001")
+    
     # CORS
     BACKEND_CORS_ORIGINS: list[str] = config(
         "BACKEND_CORS_ORIGINS",
